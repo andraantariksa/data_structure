@@ -156,7 +156,7 @@ void postOrder(node *tree){
 //         printTree(p->right, depth, 2);
 //     }
 // }
-/*
+
 void printTree(node *tree, int dep = 0){
     if(tree){
         printTree(tree->left, dep+1);
@@ -165,7 +165,7 @@ void printTree(node *tree, int dep = 0){
         printTree(tree->right, dep+1);
     }
 }
-*/
+
 node *createET(string input){
     STACK *stackET = new STACK();
     node *test;
