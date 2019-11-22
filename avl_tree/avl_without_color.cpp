@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 struct Node {
     int data;
@@ -113,17 +114,22 @@ int main()
 {
     int number, choice;
     char flag;
+    std::string fileName;
+    std::ifstream infile;
+    int get_num;
+
 
     do {
         Node *root = NULL;
         std::cout << "******************************" << std::endl;
         std::cout << "1. Insert node to the tree" << std::endl;
+        std::cout << "2. Insert node from file" << std::endl;
         std::cout << "0. Exit" << std::endl;
         std::cin >> choice;
         switch(choice) {
             case 1:
                 while(true) {
-                    std::cout << "Enter the input ";
+                    std::cout << "Enter the node: ";
                     std::cin >> number;
                     root = insert(root, number);
                     printTree(root, 0, 0);
@@ -133,6 +139,22 @@ int main()
                 }
                 break;
 
+            case 2:
+                std::cout << "Please enter the file name: ";
+                std::cin >> fileName;
+                infile.open(fileName);
+                if(!infile.is_open()) {
+                    std::cout << "File failed to open" << std::endl;
+                    return 0;
+                }
+
+                while(infile >> get_num) {
+                    root = insert(root, get_num);
+                }
+
+                printTree(root, 0, 0);
+
+                break;
             case 0:
                 break;
 
